@@ -16,7 +16,8 @@ Journal.prototype.getCount = function()
 
 Journal.prototype.getDateStamp = function()
 {
-  return moment().format("MMM Do YY");
+  // return moment().format("MMM Do YY");
+  console.log("test");
 }
 
 

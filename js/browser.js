@@ -6,8 +6,8 @@ var wordCount = require('./journal.js').wordCount;
 var moment = require('moment');
 
 var journal = require("./journal.js");
-journal.getDateStamp();
-journal.getCount();
+// journal.getDateStamp();
+// journal.getCount();
 
 
 $(document).ready(function(){
