@@ -1,6 +1,5 @@
-exports.wordCount = function(string) {
-  return string.split(" ").length;
-}
+//To Export functions use exports.functioname = function(){..}
+//To Export Constructor use module.exports = ConstructorName (ref. line 23);
 var moment = require('moment');
 
 function Journal(title, body)
@@ -18,7 +17,6 @@ Journal.prototype.getCount = function()
 Journal.prototype.getDateStamp = function()
 {
   return moment().format("MMM Do YY");
-  // console.log("test");
 }
 
 

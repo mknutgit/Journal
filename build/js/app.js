@@ -1,13 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-//Logic
-
-//User
-
-var wordCount = require('./journal.js').wordCount;
 var moment = require('moment');
-
-var journal = require("./journal.js");
-
+var Journal = require("./journal.js");
+//prototypes do not need to be exported (Constructors include all prototypes)
 
 $(document).ready(function(){
 $('#submit-click').click(function(){
@@ -15,17 +9,17 @@ $('#submit-click').click(function(){
 
   var body = $('#body').val();
   var title = $('#title').val();
-  var journalEntry = new journal(title, body);
+  var journalEntry = new Journal(title, body);
 
-  $('.entry').append("<p> Word Count:" + journalEntry.getCount() + " Date: " + journalEntry.getDateStamp()  + "</p>" );
-
+  $('.entry').append("<p> Title:" + title + "</p>");
+  $('.entry').append("<p>" + body + "</p>");
+  $('.entry').append("<p> Word Count:" + journalEntry.getCount() + " Date: " + journalEntry.getDateStamp()  + "</p>");
   });
 });
 
 },{"./journal.js":2,"moment":3}],2:[function(require,module,exports){
-exports.wordCount = function(string) {
-  return string.split(" ").length;
-}
+//To Export functions use exports.functioname = function(){..}
+//To Export Constructor use module.exports = ConstructorName (ref. line 23);
 var moment = require('moment');
 
 function Journal(title, body)
@@ -43,7 +37,6 @@ Journal.prototype.getCount = function()
 Journal.prototype.getDateStamp = function()
 {
   return moment().format("MMM Do YY");
-  // console.log("test");
 }
 
 
