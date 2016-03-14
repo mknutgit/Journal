@@ -1,6 +1,7 @@
 exports.wordCount = function(string) {
   return string.split(" ").length;
 }
+var moment = require('moment');
 
 function Journal(title, body)
 {
@@ -16,8 +17,8 @@ Journal.prototype.getCount = function()
 
 Journal.prototype.getDateStamp = function()
 {
-  // return moment().format("MMM Do YY");
-  console.log("test");
+  return moment().format("MMM Do YY");
+  // console.log("test");
 }
 
 

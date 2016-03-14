@@ -7,8 +7,6 @@ var wordCount = require('./journal.js').wordCount;
 var moment = require('moment');
 
 var journal = require("./journal.js");
-// journal.getDateStamp();
-// journal.getCount();
 
 
 $(document).ready(function(){
@@ -28,6 +26,7 @@ $('#submit-click').click(function(){
 exports.wordCount = function(string) {
   return string.split(" ").length;
 }
+var moment = require('moment');
 
 function Journal(title, body)
 {
@@ -43,14 +42,14 @@ Journal.prototype.getCount = function()
 
 Journal.prototype.getDateStamp = function()
 {
-  // return moment().format("MMM Do YY");
-  console.log("test");
+  return moment().format("MMM Do YY");
+  // console.log("test");
 }
 
 
 module.exports = Journal;
 
-},{}],3:[function(require,module,exports){
+},{"moment":3}],3:[function(require,module,exports){
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
