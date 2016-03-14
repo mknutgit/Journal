@@ -6,11 +6,21 @@
 var wordCount = require('./journal.js').wordCount;
 var moment = require('moment');
 
+var journal = require("./journal.js");
+
+
+
 $(document).ready(function(){
 $('#submit-click').click(function(){
   event.preventDefault();
-  var word = $('#body').val();
-  $('.entry').append("<p> Word Count: "  + wordCount(word) + " Date: " + moment().format("MMM Do YY")  + "</p>" );
+
+  var body = $('#body').val();
+  var title = $('#title').val();
+  var journalEntry = new journal(title, body);
+  journal.getDateStamp();
+  journal.getCount();
+
+  $('.entry').append("<p> Word Count:" + journalEntry.getCount() + " Date: " + journalEntry.getDateStamp()  + "</p>" );
 
   });
 });
@@ -19,6 +29,26 @@ $('#submit-click').click(function(){
 exports.wordCount = function(string) {
   return string.split(" ").length;
 }
+
+function Journal(title, body)
+{
+  this.title = title;
+  this.body = body;
+}
+
+Journal.prototype.getCount = function()
+{
+  return this.body.split(" ").length + this.title.split(" ").length;
+}
+
+
+Journal.prototype.getDateStamp = function()
+{
+  return moment().format("MMM Do YY");
+}
+
+
+module.exports = Journal;
 
 },{}],3:[function(require,module,exports){
 //! moment.js
